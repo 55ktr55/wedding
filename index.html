@@ -3,22 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Wedding!!</title>
-    <style>
-        .responsive-image-container {
-            width: 100%;
+    <title>飛行機アニメーション</title>
+</head>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .anime {
+        position: fixed;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeOut 0.5s linear forwards 6.6s;
+    }
+
+    .sky {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        width: 100%;
+        height: 100vh;
+        background: white
+    }
+
+    .plane {
+        position: absolute;
+        width: 3vw;
+        height: 3vw;
+        z-index: 999;
+        background-image: url('plane-icon.png'); /* 飛行機のアイコン画像を指定 */
+        background-size: contain;
+        background-repeat: no-repeat;
+        offset-path: path("M537.5 556.815C285.5 438.315 67.8687 322.473 193.5 205.815C284.5 121.315 340 97.3148 434 142.315C601 237.815 266.5 502.315 1 614.815");
+        offset-rotate: auto 90deg;
+        animation: move 5s cubic-bezier(.15,.57,.89,.26) 3s;
+    }
+
+    .logo {
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        object-fit: cover; /* 画像の比率を保ちながらサイズを調整 */
+        animation: fadeUp 2.5s ease forwards;
+        opacity: 0;
+    }
+
+    .menu {
+        width: 100%;
+        opacity: 0;
+        animation: fadeIn 0.5s linear forwards 7.1s;
+    }
+
+    .menu img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @keyframes move {
+        0% {
+            offset-distance: 0%;
+            transform: scale(1);
+        }
+        5% {
+            offset-distance: 5%;
+            transform: scale(1);
+        }
+        65% {
+            offset-distance: 65%;
+            transform: scale(1);
+        }
+        75% {
+            offset-distance: 100%;
+            transform: scale(25); /* ここでアイコンを拡大 */
+        }
+        100% {
+            offset-distance: 100%;
+            transform: translateX(-50vw) translateY(-300vh) scale(150);
+        }
+    }
+
+
+    @keyframes fadeUp{
+        from {
+            opacity: 0;
+            transform: translateY(100px);
         }
 
-        .responsive-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
+        to {
+            opacity: 1;
+            transform: translateY(-30px);
         }
-    </style>
+    }
+
+    @keyframes fadeOut{
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeIn{
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
 </head>
 <body>
-    <div class="responsive-image-container">
+    <div class="anime">
+        <div class="sky">
+            <div class="plane"></div>
+        </div>
+        <div class="logo">
+            <img src="Wedding-logo.png">
+        </div>
+    </div>
+    <div class="menu">
         <img src="menu.png" alt="Responsive Image">
     </div>
+<script>
+
+</script>
 </body>
 </html>
